@@ -5,7 +5,7 @@ objDir=obj
 FLAGS=-std=c++11 -g
 
 objDir:
-	mkdir ${objDir}
+	if [[ ! -d "${objDir}" ]]; then mkdir ${objDir}; fi;
 
 directoryReader.o: ${srcDir}/directoryReader.h ${srcDir}/directoryReader.cc objDir
 	$(GCC) ${FLAGS} -o ${objDir}/directoryReader.o -c ${srcDir}/directoryReader.cc

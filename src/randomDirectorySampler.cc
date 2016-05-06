@@ -28,10 +28,10 @@ string RandomDirectorySampler::GetRandomSample() {
     while (ret.size() < this->sample_size) {
         auto fileName = this->GetRandomFile();
         RandomFileReader fr (fileName);
-        ret += fr.GetRandomSample(rand() % (this->sample_size - ret.size()) + 1);
+        ret += fr.GetRandomSample((this->sample_size - ret.size()) % rand() + 1);
     }
 
-    return ret.substr(0, this->sample_size);
+    return ret;
 }
 
 string RandomDirectorySampler::GetRandomFile() {
